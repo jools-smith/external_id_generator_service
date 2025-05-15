@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+
+    <endpoint name="IdGen"
+              service="{urn:idgenerator.webservice.external.flexnet.com}IdGeneratorService"
+              port="{urn:idgenerator.webservice.external.flexnet.com}IdGeneratorServicePort"
+              implementation="com.flexnet.external.webservice.idgenerator.IdGeneratorServiceImpl"
+              url-pattern="/services/IdGeneratorService"/>
+</endpoints>
