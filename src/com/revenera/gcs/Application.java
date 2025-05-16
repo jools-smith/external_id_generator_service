@@ -61,7 +61,7 @@ public class Application implements ServletContextListener {
 
     logger.me(this);
 
-    this.buildSequence = "1008";
+    this.buildSequence = "1009";
     this.buildDate = "2025.05.16";
     //TODO: -> GA
     this.release = "BETA";
@@ -73,7 +73,7 @@ public class Application implements ServletContextListener {
 
 
   public Path getResourcePath(final String...parts) {
-    return Paths.get(this.web_inf, parts);
+    return this.web_inf == null ? Paths.get("") : Paths.get(this.web_inf, parts);
   }
 
   @Override
