@@ -59,7 +59,7 @@ public final class Log {
     }
   }
 
-  public void log(final Level level, final String message) {
+  private void logLocal(final Level level, final String message) {
     if (willLog(level)) {
       final Context context = new Context();
 
@@ -79,9 +79,13 @@ public final class Log {
     }
   }
 
+  public void log(final Level level, final String message) {
+    logLocal(level, message);
+  }
+
   public void yaml(final Level level, final Object obj) {
     try {
-      log(level, Utils.safeSerializeYaml(obj));
+      logLocal(level, Utils.safeSerializeYaml(obj));
     }
     catch (final Throwable e) {
       exception(e);
@@ -90,7 +94,7 @@ public final class Log {
 
   public void json(final Level level, final Object obj) {
     try {
-      log(level, Utils.safeSerializeJsonIndented(obj));
+      logLocal(level, Utils.safeSerializeJsonIndented(obj));
     }
     catch (final Throwable e) {
       exception(e);
@@ -98,7 +102,7 @@ public final class Log {
   }
 
   public void in() {
-    log(Level.trace, "->");
+    logLocal(Level.trace, "->");
   }
 
   public void me(final Object self) {
@@ -106,7 +110,7 @@ public final class Log {
   }
 
   public void out() {
-    log(Level.trace, "<-");
+    logLocal(Level.trace, "<-");
   }
 
   public void exception(final Throwable t) {
@@ -125,7 +129,7 @@ public final class Log {
 
   public void array(final Level level, final Object... params) {
 
-    log(level, Arrays.stream(params).map(Object::toString).collect(Collectors.joining(" | ")));
+    logLocal(level, Arrays.stream(params).map(Object::toString).collect(Collectors.joining(" | ")));
   }
 
   /**

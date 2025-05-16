@@ -14,21 +14,6 @@ public class Test {
     logger.in();
 
     try {
-
-
-      System.out.println(StringGenerator.create()
-                                        .withPrefix("ABC")
-                                        .withSeparator(Charset.HYPHEN)
-                                        .withCase(Case.Upper)
-                                        .withElement(Charset.hex, 8)
-                                        .withSeparator(Charset.HYPHEN)
-                                        .withElement(Charset.alpha_numeric, 8)
-                                        .withSeparator(Charset.HYPHEN)
-                                        .withElement(Charset.numeric, 8)
-                                        .withSeparator(Charset.HYPHEN)
-                                        .withElement(Charset.alpha_numeric_safe, 8)
-                                        .build());
-
       final Application app  = new Application();
 
       final IdGeneratorServiceImpl service = new IdGeneratorServiceImpl();
@@ -40,6 +25,21 @@ public class Test {
       });
 
      logger.yaml(Log.Level.info, ping);
+
+     final String id = StringGenerator.create()
+                                      .withPrefix("ABC")
+                                      .withSeparator(Charset.HYPHEN)
+                                      .withCase(Case.Upper)
+                                      .withElement(Charset.hex, 8)
+                                      .withSeparator(Charset.HYPHEN)
+                                      .withElement(Charset.alpha_numeric, 8)
+                                      .withSeparator(Charset.HYPHEN)
+                                      .withElement(Charset.numeric, 8)
+                                      .withSeparator(Charset.HYPHEN)
+                                      .withElement(Charset.alpha_numeric_safe, 8)
+                                      .build();
+
+     logger.log(Log.Level.info, id);
     }
     catch (final Throwable t) {
       logger.exception(t);
