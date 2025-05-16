@@ -24,28 +24,21 @@ public class Application implements ServletContextListener {
   private static final AtomicReference<Application> singleton = new AtomicReference<>();
 
 
-  @SuppressWarnings("unused")
-  public static Application singleton() {
-    return singleton.get();
-  }
-
   public static Application getInstance() {
     return singleton.get();
   }
 
   /** incremental build sequence */
   private final String buildSequence;
+  private final String buildDate;
+  private final String release;
+
   public String getBuildSequence() {
     return buildSequence;
   }
-
-  /** build date */
-  private final String buildDate;
   public String getBuildDate() {
     return buildDate;
   }
-
-  private final String release;
   public String getRelease() {
     return release;
   }
@@ -68,8 +61,8 @@ public class Application implements ServletContextListener {
 
     logger.me(this);
 
-    this.buildSequence = "1002";
-    this.buildDate = "2025.05.14";
+    this.buildSequence = "1008";
+    this.buildDate = "2025.05.16";
     //TODO: -> GA
     this.release = "BETA";
 
